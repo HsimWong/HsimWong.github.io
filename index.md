@@ -6,10 +6,10 @@
 - I usually working with go, and I'm beginning learning Kubernetes
 
 ## Projects
-[Go后端项目ecommerce](projects/user-center/user-center.md)
 
-## Project Log
-[Go后端项目ecommerce](projects/user-center/user-center-devel.md)
+[Go后端项目ecommerce项目说明](projects/user-center/user-center.md)
+
+[Go后端项目ecommerce开发日志](projects/user-center/user-center-devel.md)
 
 ## Experiences
 
