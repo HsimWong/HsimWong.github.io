@@ -11,6 +11,10 @@
 ## Project Log
 [Go后端项目ecommerce](projects/user-center/user-center-devel.md)
 
+## Experiences
+
+[数据库密码被git追踪了！](diaries/git-pushed-credentials.md)
+
 ## Diaries
 
 ### 2025
