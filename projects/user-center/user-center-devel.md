@@ -6,3 +6,4 @@
 | 动态日志级别控制 | 是       |  [ffebf](https://github.com/HsimWong/ecommerce/commit/ffebf73c74feb3167d89f692e2863d25ea224404)                                                                                                                                                                                             | 通过API动态调整日志级别（适合生产环境）                 |
 | 配置验证增强     | 否       |                                                                                                                                                                                               | 确保关键配置存在且合法（在 config.InitConfig() 中添加） |
 |yaml配置模板|否| |通过模板和环境变量配置数据库|
+|建立数据后端API、Servcie、DAO三层架构|是|[df1cd](https://github.com/HsimWong/ecommerce/commit/df1cd11c894b7870cbcb7f4e4d297a703daa9332)|定义User元数据、行为模式|
