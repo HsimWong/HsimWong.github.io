@@ -4,6 +4,6 @@
 | ---------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | 搭建基础项目框架 | 是       |[9fa82](https://github.com/HsimWong/ecommerce/commit/9fa825a8b5fc01494434b25827954c11f701a05d)| 1. 完成配置文件viper读入； 2. 完成zapLogger的配置       |
 | 动态日志级别控制 | 是       |  [ffebf](https://github.com/HsimWong/ecommerce/commit/ffebf73c74feb3167d89f692e2863d25ea224404)                                                                                                                                                                                             | 通过API动态调整日志级别（适合生产环境）                 |
-| 配置验证增强     | 否       |                                                                                                                                                                                               | 确保关键配置存在且合法（在 config.InitConfig() 中添加） |
+| 配置单例模式于验证     | 是       |  [5d15cc](https://github.com/HsimWong/ecommerce/commit/5d15cc6e06e5cd3cb903cb0586d0dea12b4ce15c)                                                                                                                                                                                             | 确保关键配置存在且合法（在 config.InitConfig() 中添加） |
 |yaml配置模板|否| |通过模板和环境变量配置数据库|
 |建立数据后端API、Servcie、DAO三层架构|是|[df1cd](https://github.com/HsimWong/ecommerce/commit/df1cd11c894b7870cbcb7f4e4d297a703daa9332)|定义User元数据、行为模式|
