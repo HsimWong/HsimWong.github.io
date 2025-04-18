@@ -18,6 +18,7 @@
 
 ### 设计模式
 - [Go后端项目的DAO、Service、API三层架构](diaries/architechture.md)
+- [单例模式要点](diaries/singleton_config.md)
 
 ### 网络技术
 - [L2 over L3: 点对点VxLAN在华为交换机上的实验](diaries/vxlan.md)
