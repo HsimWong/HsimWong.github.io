@@ -10,9 +10,11 @@
 
 ## Experiences
 
+### Work Projects
+- [Go HA+DSM+Control Plane: How I struggled to manage the system?](diaries/System.md)
+
 ### 填坑
 - [数据库密码被git追踪了！](diaries/git-pushed-credentials.md)
-- 
 - [数据库密码被git追踪了！](diaries/Go_iteration.md)
 
 ### 设计模式
