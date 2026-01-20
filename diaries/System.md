@@ -1,5 +1,6 @@
 
-# System Background
+# Constrained Cluster Management Control Plane
+## System Background
 
 The system was designed to manage and deploy a fleet of industrial CPU boards used in a production environment.
 
@@ -12,13 +13,16 @@ Specifically:
 * No application-level API
 * No ability to install agents
 * No direct way to query internal state
+* UDP is the **only reliable signal** indicating that a device is alive.
 
 All deployment and recovery operations must therefore be executed **externally**, without any manual intervention.
 Physical access to devices is either unavailable or prohibitively expensive.
 
 ---
 
-# Network and Addressing Constraints
+## Constraints
+
+### Network and Addressing Constraints
 
 All devices are shipped with the **same static IP address**, which cannot be modified.
 
@@ -41,39 +45,7 @@ To enable parallel operation, the system relies on **VLAN-based network isolatio
 All VLAN configuration is created and managed programmatically by the system.
 
 ---
-
-# Communication Limitations
-
-The system operates under severe communication constraints.
-
-## FTP (File Deployment)
-
-* Plain FTP (port 21)
-* Push-based only (controller → device)
-* No resume support
-* No transactional guarantees
-* File integrity verified via CRC
-* Partial or corrupted writes are possible and must be handled externally
-
-## SNMP (Control & Monitoring)
-
-* SNMP read/write is supported
-* Used primarily to control external relay devices (Moxa ioLogik 2210)
-* Power operations are performed by writing specific OIDs
-* SNMP communication may fail or time out and must be treated as unreliable
-
-## UDP (Liveness Detection)
-
-* Devices periodically emit UDP packets
-* Packet payload is not interpretable
-* Presence of packets is the only liveness signal
-* Device identity is inferred from VLAN source, not packet content
-
-UDP is the **only reliable signal** indicating that a device is alive.
-
----
-
-# Power Control Constraints
+### Power Control Constraints
 
 Devices do not provide any software-controlled reboot or shutdown interface.
 
@@ -93,11 +65,11 @@ No direct confirmation of successful power-on is available.
 
 ---
 
-# System Goal
+## System Goal
 
 The primary goal of the system is:
 
-> **To reliably deploy and recover devices in a fully automated manner under unreliable network and hardware conditions.**
+**To reliably deploy and recover devices in a fully automated manner under unreliable network and hardware conditions.**
 
 Key objectives:
 
@@ -109,28 +81,15 @@ Key objectives:
 
 The system is not optimized for throughput, but for **operational safety and recoverability**.
 
----
 
-# Design Ownership
-
-I was the technical owner of the system and responsible for its overall architecture and implementation.
-
-My responsibilities included:
-
-* Designing the deployment workflow and state machine
-* Designing the VLAN-based isolation model
-* Implementing reconciliation logic for unreliable devices
-* Defining failure-handling and recovery strategies
-
-Some infrastructure components were introduced at the organizational level, but all system-level design decisions and trade-offs were made by me.
 
 ---
 
-# Core Challenge
+### Core Challenge
 
 The core difficulty of the system lies in the following:
 
-> **Managing a multi-step deployment process when device state cannot be directly observed and must be inferred from indirect signals.**
+Managing a multi-step deployment process when device state cannot be directly observed and must be inferred from indirect signals.
 
 Specifically:
 
@@ -139,12 +98,6 @@ Specifically:
 * Deployment is non-atomic
 * Failures are frequent and unavoidable
 * The system must remain correct even when assumptions break
-
----
-
-# Problem Statement
-
-The core problem is to reliably orchestrate multi-step deployments on devices that cannot be directly controlled or observed.
 
 All devices share the same static IP address, expose no management interface, and communicate only through unreliable channels.
 As a result, the system cannot directly determine device state and must infer progress indirectly.
@@ -157,9 +110,9 @@ The challenge is to design a deployment mechanism that is:
 * Robust against network and device instability
 
 
-# Architecture Overview
+## Architecture Overview
 
-## High-Level Architecture
+### High-Level Architecture
 
 The system follows a **controller-based architecture** with a centralized control plane and externally managed devices.
 
@@ -174,11 +127,9 @@ At a high level, it consists of:
 The system does not rely on agents or remote execution on the devices.
 All control is performed indirectly through network and power operations.
 
----
+### Component Overview
 
-## Component Overview
-
-### 1. Control Plane
+#### 1. Control Plane
 
 The control plane is the core of the system and is responsible for:
 
@@ -199,7 +150,7 @@ Key properties:
 
 ---
 
-### 2. State Store (etcd)
+#### 2. State Store (etcd)
 
 etcd is used as the **single source of truth** for system state.
 
@@ -220,7 +171,7 @@ State is written in a way that allows a new controller instance to reconstruct p
 
 ---
 
-### 3. Controller High Availability
+#### 3. Controller High Availability
 
 The control plane runs in an **active–standby configuration**.
 
@@ -244,7 +195,7 @@ To prevent split-brain scenarios:
 
 ---
 
-### 4. Deployment Workflow
+#### 4. Deployment Workflow
 
 The deployment process is modeled as a **state machine**.
 
@@ -268,7 +219,7 @@ The controller continuously reconciles the **desired state** with the **observed
 
 ---
 
-### 5. Network Isolation Layer
+#### 5. Network Isolation Layer
 
 Because all devices share the same static IP, the system relies on VLAN-based isolation:
 
@@ -287,7 +238,7 @@ The network layer is fully managed by the control plane and does not require man
 
 ---
 
-### 6. Device Interaction Model
+#### 6. Device Interaction Model
 
 Devices are treated as **black boxes**.
 
@@ -311,7 +262,7 @@ All operations are designed under the assumption that:
 
 ---
 
-### 7. Failure Handling and Recovery
+#### 7. Failure Handling and Recovery
 
 Failure is treated as a first-class scenario.
 
@@ -350,25 +301,17 @@ It is designed for environments where:
 * Failures are normal
 * Automation must be trusted
 
-好，这一节是**整份文档里最值钱的部分**。
-你前面已经把“我做了什么”讲清楚了，现在这一节要回答：
 
-> **我为什么这么做，而不是用更“标准”的方案？**
 
-下面是我根据你真实设计，给你写好的 **Design Decisions & Trade-offs**。
-这是可以直接交给面试官看的版本。
+## Design Decisions & Trade-offs
 
----
+### 1. Declarative State Machine vs Imperative Workflow
 
-# Design Decisions & Trade-offs
-
-## 1. Declarative State Machine vs Imperative Workflow
-
-### Decision
+#### Decision
 
 The system is built around a **state-driven reconciliation model**, rather than an imperative, step-by-step execution flow.
 
-### Rationale
+#### Rationale
 
 Due to the lack of reliable device feedback and the high probability of partial failure, an imperative model would be fragile:
 
@@ -384,7 +327,7 @@ By modeling deployment as a **state machine**, the system can:
 * Infer progress from persisted state
 * Recover from controller restarts
 
-### Trade-off
+#### Trade-off
 
 * Increased complexity in state modeling
 * More logic required to handle transitions
@@ -394,13 +337,13 @@ However, this approach is necessary to achieve correctness under unreliable cond
 
 ---
 
-## 2. VLAN-Based Isolation vs Device Reconfiguration
+### 2. VLAN-Based Isolation vs Device Reconfiguration
 
-### Decision
+#### Decision
 
 VLAN-based isolation was used instead of modifying device IP configuration or introducing NAT.
 
-### Rationale
+#### Rationale
 
 * Device IP addresses are fixed and cannot be changed
 * DHCP is not supported
@@ -414,7 +357,7 @@ Using VLANs allows:
 * Deterministic network isolation
 * Full control from the controller side
 
-### Trade-off
+#### Trade-off
 
 * Requires switch and NIC configuration
 * Adds operational complexity
@@ -424,13 +367,13 @@ This trade-off was accepted because it moves complexity from the device side (un
 
 ---
 
-## 3. No Agent-Based Architecture
+### 3. No Agent-Based Architecture
 
-### Decision
+#### Decision
 
 No agent or runtime is deployed on the devices.
 
-### Rationale
+#### Rationale
 
 * Devices do not support agent installation
 * No remote execution capability
@@ -443,7 +386,7 @@ Instead, the system relies exclusively on:
 * SNMP for control
 * UDP for liveness
 
-### Trade-off
+#### Trade-off
 
 * Limited observability
 * No fine-grained telemetry
@@ -453,13 +396,13 @@ This was a conscious decision to favor **robustness under constraint** over feat
 
 ---
 
-## 4. Idempotency Over Transactionality
+### 4. Idempotency Over Transactionality
 
-### Decision
+#### Decision
 
 The system favors **idempotent operations** over transactional guarantees.
 
-### Rationale
+#### Rationale
 
 * FTP does not support atomic operations
 * Power cycling is inherently non-transactional
@@ -472,7 +415,7 @@ Therefore:
 * State transitions are persistent
 * Duplicate execution is allowed and expected
 
-### Trade-off
+#### Trade-off
 
 * More complex state management
 * Requires careful design of side effects
@@ -482,13 +425,13 @@ This approach ensures the system can always make forward progress.
 
 ---
 
-## 5. Lease-Based HA Instead of External Orchestration
+### 5. Lease-Based HA Instead of External Orchestration
 
-### Decision
+#### Decision
 
 High availability is implemented using **etcd leases** rather than external systems such as Kubernetes leader election or distributed locks.
 
-### Rationale
+#### Rationale
 
 * System must operate independently of orchestration platforms
 * Simpler failure model
@@ -502,7 +445,7 @@ The lease model allows:
 * Explicit fencing behavior
 * Deterministic recovery
 
-### Trade-off
+#### Trade-off
 
 * Requires careful time synchronization
 * Lease logic must be implemented and maintained manually
@@ -510,13 +453,13 @@ The lease model allows:
 
 ---
 
-## 6. Reliability Over Performance
+### 6. Reliability Over Performance
 
-### Decision
+#### Decision
 
 The system prioritizes **correctness and recoverability** over throughput or latency.
 
-### Rationale
+#### Rationale
 
 * Deployment speed is not business-critical
 * A failed deployment is significantly more costly than a slow one
@@ -528,7 +471,7 @@ As a result:
 * Timeouts are intentionally long
 * Verification is prioritized over speed
 
-### Trade-off
+#### Trade-off
 
 * Slower deployment times
 * Lower throughput
@@ -536,9 +479,11 @@ As a result:
 
 This is acceptable given the operational context.
 
+
+
 ---
 
-## Summary of Design Philosophy
+### Summary of Design Philosophy
 
 The system is built around the following principles:
 
@@ -550,7 +495,20 @@ The system is built around the following principles:
 
 These decisions allow the system to operate reliably in an environment where traditional assumptions about observability and control do not hold.
 
+---
 
+## Design Ownership
+
+I was the technical owner of the system and responsible for its overall architecture and implementation.
+
+My responsibilities included:
+
+* Designing the deployment workflow and state machine
+* Designing the VLAN-based isolation model
+* Implementing reconciliation logic for unreliable devices
+* Defining failure-handling and recovery strategies
+
+Some infrastructure components were introduced at the organizational level, but all system-level design decisions and trade-offs were made by me.
 
 
 状态机 + 重试 + 恢复
