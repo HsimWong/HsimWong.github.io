@@ -13,6 +13,15 @@
 ### Work Projects
 - [Go HA+DSM+Control Plane: How I struggled to manage the system?](diaries/System.md)
 
+### Kubernetes Operator
+- [Design Phylosophy](Run/Edge-monitor.md)
+- [Timeline and Milestone](Run/Timeline-EdgeDeviceOperator.md)
+- [OperationLog](Run/Log-EdgeDeviceOperator.md)
+
+
+### Hacking & Struggling
+- [Cracking Internet Sensorship](CrackingGFW/CrackingGFWLog.md)
+
 ### 填坑
 - [数据库密码被git追踪了！](diaries/git-pushed-credentials.md)
 - [数据库密码被git追踪了！](diaries/Go_iteration.md)
