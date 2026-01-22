@@ -21,3 +21,19 @@ The connection to the server localhost:8080 was refused - did you specify the ri
 2. No need, verification:`ubuntu@VM-8-15-ubuntu:~/hsimwong.github.io/scripts$ go version
 go version go1.24.2 linux/amd64`
 
+
+## Jan 22, 2026
+### Installing kind and Create cluster
+   1. `kind` has been block by GFW, looking for a workaround with Go:https://kind.sigs.k8s.io/
+   2. Run `go install sigs.k8s.io/kind@latest`
+   3. Add line at the bottom of `~/.bashrc`: `export PATH=$PATH:/home/ubuntu/go/bin`
+   4. Activate kind `source ~/.bashrc`
+   5. Validate with `kind --version`:
+2. Create local cluster: `kind create cluster`
+   It's slow as fuck because of the GFW. I know that I need to bypass with the proxy, or use the image station. I found that USTC offered registry mirror site but no longer now. 
+3. ... Described in [Cracking GFW Log](../CrackingGFW/CrackingGFWLog.md)
+
+### Establish Scaffold
+1. Kubebuilder init: `kubebuilder init --domain ryan.wang --repo github.com/HsimWong/edge-deploy-controller`
+2. 
+
