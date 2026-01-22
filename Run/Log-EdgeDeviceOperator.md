@@ -35,5 +35,5 @@ go version go1.24.2 linux/amd64`
 
 ### Establish Scaffold
 1. Kubebuilder init: `kubebuilder init --domain ryan.wang --repo github.com/HsimWong/edge-deploy-controller`
-2. 
-
+2. kubebuidld`kubebuilder create api --group edge --version v1 --kind DeviceDeployment --reousrce --controller`
+3. 
