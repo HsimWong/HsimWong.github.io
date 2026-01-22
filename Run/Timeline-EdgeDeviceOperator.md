@@ -24,13 +24,14 @@ Non-goals (explicit):
 
 * [x] Install kubectl
 * [x] Install Go (>=1.21)
-* [ ] Install kind (or k3d)
-* [ ] Create local cluster (kind create cluster)
-* [ ] Verify kubectl get nodes works
+* [x] Install kind (or k3d)
+* [x] Install docker
+* [x] Create local cluster (kind create cluster)
+* [x] Verify kubectl get nodes works
 
 **Operator scaffold**
 
-* [ ] Install kubebuilder
+* [x] Install kubebuilder
 * [ ] kubebuilder init (Go, controller-runtime)
 * [ ] kubebuilder create api (group=edge, version=v1, kind=DeviceDeployment)
 * [ ] CRD installs successfully
