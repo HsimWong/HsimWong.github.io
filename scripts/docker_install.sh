@@ -53,8 +53,13 @@ echo "  sudo usermod -aG docker $SUDO_USER && newgrp docker"
 
 sudo tee /etc/docker/daemon.json <<'EOF'
 {
-  "registry-mirrors": ["https://mirror.ccs.tencentyun.com"]
+  "registry-mirrors": ["https://docker.m.daocloud.io"]
 }
 EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+
+USER=$(whoami)
+sudo groupadd docker 2>/dev/null || true
+sudo usermod -aG docker $USER
+newgrp docker
