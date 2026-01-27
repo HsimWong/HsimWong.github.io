@@ -43,3 +43,16 @@ curl: (56) Failure when receiving data from the peer
 chmod: cannot access 'kubebuilder': No such file or directory
 ```
 Config your proxy!
+
+
+## Update on Jan 26
+The Tencent VM is too small, so I transterred the code onto my local laptop, and the env has to be 
+re-configured.
+
+I just found the tencent docker hub is not accessible from outside, so I have to find another one. 
+
+There used to be many docker mirror hubs hosted in mainland China, and many of them are either blocked or censored.
+
+There are also many pioneers that tried to work around:
+
+https://www.wangdu.site/course/2109.html
