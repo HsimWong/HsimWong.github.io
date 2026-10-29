@@ -12,7 +12,40 @@
 - Lequel de vous deux va s'occuper de ce travail?
 
 ## Les Promons Démonstratif 指示代词
-### celui/celle/ceux/celles
+指代上文提到过的人或者物品，相当于英语里的this one, that one.
+<table align=center>
+  <tr>
+    <td></td>
+    <td colspan="2" align=center>简单形式</td>
+    <td colspan="2" align=center>复合形式</td>
+  </tr>
+  <tr>
+  <td></td>
+    <td>masculin</td>
+    <td>féminin</td>
+    <td>masculin</td>
+    <td>féminin</td>
+  </tr>
+  <tr>
+    <td>Singulier</td>
+    <td>celui</td>
+    <td>celle</td>
+    <td>celui-ci/celui-là</td>
+    <td>celle-ci/celle-là</td>
+  </tr>
+  <tr>
+    <td>Pluriel</td>
+    <td>ceux</td>
+    <td>celles</td>
+    <td>ceux-ci/ceux-là</td>
+    <td>celles-ci/celles-là</td>
+  </tr>
+</table>
+
+#### E.g. 
+- Ici, à droit, vous avez deux chambres: celle-ci est grande, **celle-là** est petite.
+- Je voudrais une robe bleue. Pouvez-vous me montrer **celle-là**, s'il vous plaît?
+
 
 ### Où (prep + n.)
 - Être-vous satisfait de la maison où vous habitez?
