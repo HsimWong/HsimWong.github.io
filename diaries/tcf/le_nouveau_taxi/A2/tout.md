@@ -6,6 +6,7 @@
 |--|--|--|
 |s|tout|toute|
 |p|tous [tu]|toutes|
+
 ### 任何，每个 (every, any)
 - Tout homme est sujet à l'erreur
 - Je peux réponder toute question.

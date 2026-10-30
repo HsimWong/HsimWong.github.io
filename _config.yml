@@ -1,9 +1,10 @@
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-hacker
 plugins:
   - jekyll-seo-tag
+  - jemoji 
   
 # theme: jekyll-theme-hacker
 

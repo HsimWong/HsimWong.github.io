@@ -57,11 +57,13 @@ un joli tatouage, un long voyage
 </table>
 
 副词比较级不规则情况：可能出现不同的词根
+
 |原形|同级比较=|比较级+|低级比较-|例句
 |----|-----|----|-----|--|
 |bien|aussi bien|mieux|moins bien|Elle chante **mieux** que lui|
 |beaucoup|autant de|plus [plys] de| - |Il a fait **autant de** fautes que toi.|
 |peu|aussi peu de| moins de|-|J'ai **moins de** problèmes que vous.|
+
 
 
 

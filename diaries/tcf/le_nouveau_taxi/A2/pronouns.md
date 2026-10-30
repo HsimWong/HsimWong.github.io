@@ -8,15 +8,13 @@
 |Masculin| lequel| lequels|
 |Féminin| laquelle| laquelles|
 
-用例：
-- Laquelle de ces robes choisis-tu?
-- J'ai beaucoup de disques. Lequels préfères-tu?
-- Lequel de vous deux va s'occuper de ce travail?
-
 
 ■ 疑问代词lequel是一种复合疑问词，它代替了疑问代词quel及其修饰的名词，即**lequel=quel+名词**；它可以指人，也可以指物，往往是在几个人或物之间进行选择时使用，意为“哪个，哪几个，哪些”。例如：
+
 **Laquelle de ces robes choisis-tu ?** 你选择这些裙子中的哪一件？
+
 J'ai beaucoup de disques. **Lesquels préfères-tu ?** 我有很多唱片。你喜欢哪些？
+
 **Lequel de vous deux** va s'occuper de ce travail ? 你们两位中是谁将负责这项工作？
 
 **■ 注意**：lequel的后面往往带有表示选择对象的补语（一般由介词de来引导），或者在前文中已经交代了选择范围。
