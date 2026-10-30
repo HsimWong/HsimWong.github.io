@@ -12,6 +12,7 @@ les hibitudes vestimentaires, une langue dificile
 #### 常用形容词
 un joli tatouage, un long voyage
 ### 前后都有，但意思不一样
+
 |词汇|含义|词汇|含义|
 |--|--|--|--|
 |un homme **grand**|身材高大|un **grand** homme|伟大|
@@ -26,9 +27,11 @@ un joli tatouage, un long voyage
 |as...as..|aussi...que...|
 |more...than...|plus...que|
 |less...than...|moin...que|
+
 * 注：aussi...que possible=as...as possible和英语一致
 ### 不规则情况
 形容词不规则情况一般是向上的比较级，即利用plus的情况
+
 |原形|比较级|原形|比较级|
 |----|-----|----|-----|
 |bon|meilleur(e)(s)|mauvais|pire(s)/mauvais(e)(s)|

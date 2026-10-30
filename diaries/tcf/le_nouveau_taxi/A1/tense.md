@@ -5,13 +5,17 @@ Lecon 24 p.289
 ### 前缀
 除了être外，均为第一人称复数形式去掉-ons
 ### 后缀
+
 |je|tu|il/elle/on|nous|vous|ils/elles|
 |--|--|----------|----|----|---------|
 |-ais|-ais|-ait|-ions|-iez|-aiont|
+
 ### 特殊情况 être
+
 |Je|tu|il/elle/on|nous|vous|ils/elles|
 |---|---|---|---|---|---|
 |j'étais| tu étais |il était |nous étions| vous étiez |ils étaient|
+
 ## 用法
 与英语的一般过去时、过去进行时都有重合的地方
 1. 不确定时间点，但过去发生的事情，一般用于描述背景
@@ -47,6 +51,7 @@ Lecon 24 p.289
 |pouvoir|pourr-|pleuvoir|pleuvr-|
 
 #### 后缀：
+
 |je|tu|il/elle/on|nous|vous|ils/elles|
 |--|--|----------|----|----|---------|
 |-ai|-as|-a|-ons|-ez|ont|

@@ -1,9 +1,6 @@
 theme: jekyll-theme-hacker
-
 plugins:
   - jemoji  
-
-
 markdown: kramdown
 kramdown:
   input: GFM
