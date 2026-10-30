@@ -1,9 +1,17 @@
-theme: jekyll-theme-hacker
 
-plugins:
-  - jemoji  
-
-
+# Build settings
 markdown: kramdown
-kramdown:
-  input: GFM
+theme: minima
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  
+# theme: jekyll-theme-hacker
+
+# plugins:
+#   - jemoji  
+
+
+# markdown: kramdown
+# kramdown:
+#   input: GFM
