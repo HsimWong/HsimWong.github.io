@@ -29,6 +29,7 @@ un joli tatouage, un long voyage
 |less...than...|moin...que|
 
 * 注：aussi...que possible=as...as possible和英语一致
+
 ### 不规则情况
 形容词不规则情况一般是向上的比较级，即利用plus的情况
 
