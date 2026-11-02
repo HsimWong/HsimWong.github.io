@@ -25,6 +25,12 @@
 ### TCF （正在更新）
 - [A1](diaries/tcf/le_nouveau_taxi/A1/A1.md)
 - [A2](diaries/tcf/le_nouveau_taxi/A2/A2.md)
+- [练习与测验（test）](diaries/tcf/test/README.md)
+  - [知识点追踪](diaries/tcf/test/知识点追踪.md)
+  - [A1–A2 综合诊断](diaries/tcf/test/A1-A2_综合诊断_01/考卷.md)
+  - [未完成过去时专项](diaries/tcf/test/A1-A2_未完成过去时_Imparfait_01/考卷.md)
+  - [复合过去时：助动词与自反动词](diaries/tcf/test/A1-A2_复合过去时助动词与自反动词_01/考卷.md)
+  - [A2 词汇训练](diaries/tcf/test/A2_词汇训练/README.md)
 
 ### 填坑
 - [数据库密码被git追踪了！](diaries/git-pushed-credentials.md)
@@ -50,3 +56,4 @@
 [Go后端项目ecommerce项目说明](projects/user-center/user-center.md)
 
 [Go后端项目ecommerce开发日志](projects/user-center/user-center-devel.md)
+
